@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/litera/bootstrap.min.css" rel="stylesheet" integrity="sha384-D/7uAka7uwterkSxa2LwZR7RJqH2X6jfmhkJ0vFPGUtPyBMF2WMq9S+f9Ik5jJu1" crossorigin="anonymous">
+    <meta charset="UTF-8">
+
+    {% if usuarios %}
+        {% for usuario in usuarios %}
+    <title>Usuario: {{ usuario.nombre }}</title>
+        {% endfor %}
+    {% endif %}
+
+</head>
+<body style="background-image: url(https://k61.kn3.net/F/C/9/F/1/9/EA8.jpg); background-position: center center; background-repeat: no-repeat; background-attachment: fixed; background-size: cover; background-color: #66999;">
+
+<div style="text-align: center; background-color: rgba(43, 38, 21, 0.5); border: 2px solid rgb(163, 151, 111); margin: 1rem; padding: 1rem; border-radius: 30px;">
+{% if usuarios %}
+    {% for usuario in usuarios %}
+
+    <div style="float: left;">
+        <h4 style="color: rgb(227, 217, 182);">Usuario: {{ usuario.nombre }}</h4>
+    </div>
+<!--<h2 style="color: white;">Id usuario: {{ usuario.id }}</h2>-->
+    {% endfor %}
+    {% endif %}
+
+    <div style="float: right;">
+        <h4><a style="color: rgb(240, 230, 194);" href="{% url 'usuario:inicio' %}">Cerrar Sesion</a></h4>
+    </div>
+
+    <div>
+        <h4><a style="color: rgb(240, 230, 194);" href="{% url 'hule:crear_finca' usuario  %}">Crear Finca</a></h4>
+        <h6 style="text-align: center;"><a style="color: rgb(240, 230, 194);" href="{% url 'hule:home_parcelas' usuario %}">Listado Parcelas</a></h6>
+    </div>
+
+
+</div>
+
+<hr/>
+
+<div>
+{% if fincas %}
+    {% for finca in fincas %}
+    <div style="background-color: rgba(187, 77, 0, 0.75); width: 400px; margin-left: auto; margin-right: auto; margin-top: 10px; border: 2px solid rgb(89, 38, 2); border-radius: 20px;">
+    <h2 style="color: rgb(240, 230, 194); text-align: center;">Finca: {{ finca.nombre }}</h2><br>
+    <!--<h2> id de la finca {{ finca.id }}</h2>-->
+        <h6 style="text-align: center;"><a style="color: rgb(240, 230, 194);" href="{% url 'hule:editar_finca' finca.id %}">Editar Finca</a></h6>
+        <h6 style="text-align: center;"><a style="color: rgb(240, 230, 194);" href="{% url 'hule:borrar_finca' finca.id %}">Borrar Finca</a></h6>
+        <h6 style="text-align: center;"><a style="color: rgb(240, 230, 194);" href="{% url 'hule:ver_parcela' usuario finca.id %}">Ver Parcelas</a></h6>
+        <h6 style="text-align: center;"><a style="color: rgb(240, 230, 194);" href="{% url 'hule:crear_parcela' usuario finca.id %}">Crear Parcela</a></h6>
+        <h6 style="text-align: center;"><a style="color: rgb(240, 230, 194);" href="{% url 'hule:editar_parcela' usuario finca.id %}">Editar Parcela</a></h6>
+    <hr style="color: rgb(178, 0, 6);" />
+    </div>
+    {% endfor %}
+</div>
+
+    {% else %}
+        <h2>Aun no tienes nada registrado.</h2>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar</title>
+</head>
+<body>
+    <form class="classdos" action="{% url 'hule:crear_parcela' usuario.pk finca.pk %}" method="POST">{% csrf_token %}
+        <h1 class="classtres">Crear Parcela</h1>
+        <input class="classcuatro" name="finca_origen" value="{{ finca.nombre }}" disabled/>
+        <p class="classcinco"><label>nombre: </label><input class="classcuatro" type="text" name="nombre"></p>
+        <p class="classcinco"><label>latitud: </label><input class="classcuatro" type="text" name="latitud"></p>
+        <p class="classcinco"><label>longitud: </label><input class="classcuatro" type="text" name="longitud"></p>
+        <p><input class="classseis" type="submit" value="Crear"></p>
+    </form>
+</body>
+</html>

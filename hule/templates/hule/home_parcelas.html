@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parcelas</title>
+    <style>
+        .classuno{
+        background: linear-gradient(90deg, rgba(232,6,37,1) 0%, rgba(93,47,49,1) 35%, rgba(70,0,11,1) 100%);
+        }
+
+        .classdos{
+        color: white;
+        }
+    </style>
+</head>
+<body class="classuno">
+<h4><a style="color: rgb(240, 230, 194);" href="{% url 'hule:home' usuario_id %}">Regresar</a></h4>
+{% if parcelas %}
+{% for parcela in parcelas %}
+
+<div style="background-color: rgba(187, 77, 0, 0.75); width: 400px; margin-left: auto; margin-right: auto; margin-top: 10px; border: 2px solid rgb(89, 38, 2); border-radius: 20px;">
+<ul class="classdos">{{ parcela.nombre }}</ul>
+</div>
+
+{% endfor %}
+{% endif %}
+</body>
+</html>
